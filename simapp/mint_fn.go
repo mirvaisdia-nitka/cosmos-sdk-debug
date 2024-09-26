@@ -71,7 +71,7 @@ func ProvideExampleMintFn(bankKeeper MintBankKeeper) minttypes.MintFn {
 		if !ok {
 			return fmt.Errorf("unexpected response type: %T", resp)
 		}
-
+		fmt.Printf("Params: %+v\n", mintParams.Params)
 		// bondedRatio
 		bondedRatio := math.LegacyNewDecFromInt(stakingPool.Pool.BondedTokens).QuoInt(stakingTokenSupply.Amount)
 		minter.Inflation = minter.NextInflationRate(mintParams.Params, bondedRatio)
